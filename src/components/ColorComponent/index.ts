@@ -1,0 +1,1 @@
+export { ColorRetangle } from './ColorRetangle';
