@@ -3,7 +3,7 @@
 import { ColorRetangle } from "@/components/ColorComponent"
 import React, { useEffect, useState } from "react";
 
-export default function InitialPage() {
+export default function HomePage() {
     const [colors, setColors] = useState<string[]>([]);
 
     const generateColors = () => {
@@ -18,13 +18,21 @@ export default function InitialPage() {
         generateColors();
     }, []);
 
-    useEffect(()=>{
-
-    },[])
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === ' ') {
+                generateColors();
+            }
+        }
+        window.addEventListener('keydown', handleKeyDown)
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown)
+        }
+    }, [])
 
     return (
         <>
-            <div className="flex">
+            <div className="flex w-full">
                 {colors.map((color, index) => (
                     <ColorRetangle key={index} color={color}></ColorRetangle>
                 ))}
