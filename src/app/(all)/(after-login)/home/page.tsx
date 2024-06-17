@@ -16,15 +16,21 @@ export default function InitialPage() {
 
     useEffect(() => {
         generateColors();
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === " ") {
+                generateColors();
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
     }, []);
 
-    useEffect(()=>{
-
-    },[])
 
     return (
         <>
-            <div className="flex">
+            <div onKeyDownCapture={() => generateColors()} className="flex">
                 {colors.map((color, index) => (
                     <ColorRetangle key={index} color={color}></ColorRetangle>
                 ))}

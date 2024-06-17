@@ -11,7 +11,7 @@ type Props = AppProps & {
 export default function Layout({ children }: Props) {
 
     return (
-        <body id="body" className={`w-screen h-screen bg-white flex flex-col`}>
+        <body  className={`w-screen h-screen bg-white flex flex-col`}>
             {children}
         </body>
     );
